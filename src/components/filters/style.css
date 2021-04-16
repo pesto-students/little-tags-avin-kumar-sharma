@@ -1,0 +1,32 @@
+.product-filter-section {
+    width: 100%;
+    border: 1px solid #e9e9ed;
+    padding: 20px;
+    color: black;
+    font-size: 18px;
+}
+
+.product-category-filter,
+.product-brand-filter,
+.product-price-filter {
+    text-align: left;
+
+}
+
+.filter-item {
+    padding: 8px;
+}
+
+.filter-item>input {
+    margin-right: 8px;
+}
+
+.filter-title {
+    text-transform: uppercase;
+    color: #3e4152;
+    font-size: 18px;
+    letter-spacing: .15em;
+    margin: 50px 0 10px 30px;
+    font-weight: 500;
+}
+

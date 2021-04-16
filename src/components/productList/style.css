@@ -1,0 +1,29 @@
+.product-list-section{
+  display: flex;
+  height: 800px;
+}
+.product-list{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+.product-list::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  /* Track */
+  .product-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+   
+  /* Handle */
+  .product-list::-webkit-scrollbar-thumb {
+    background:#3e4152;
+  }
+  
+  /* Handle on hover */
+  .product-list::-webkit-scrollbar-thumb:hover {
+    background:#3e4152;
+  }
