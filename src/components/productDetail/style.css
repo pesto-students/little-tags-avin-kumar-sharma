@@ -1,0 +1,116 @@
+.product-detail-section{
+    display: flex;
+    justify-content: space-evenly;
+    margin:20px 0px;
+    
+}
+.display-image{
+    cursor: pointer;
+    width:60%;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.display-image img{
+    width:50%;
+    padding:4px;
+}
+
+.product-detail-description{
+    margin-left: 20px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+.pdp-name {
+    color: black;
+    padding: 5px 20px 14px 0;
+    font-size: 20px;
+    opacity: .8;
+    font-weight: 400;
+}
+.pdp-discount-container {
+    
+    margin-top: 14px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+.pdp-price strong{
+    font-size: 32px;
+    color: #282c3f;
+    font-weight: 500;
+}
+.pdp-price:focus {
+    outline: none;
+}
+
+.pdp-discount {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    color: #ff905a;
+}
+.product-tax{
+ color: green;    
+}
+
+.product-size{
+    margin-top: 20px;
+ display: flex;
+ justify-content: flex-start;
+ cursor: pointer;
+}
+
+.product-size .size{
+    border: 1px solid #bfc0c6;
+    font-size: 18px;
+    padding: 18px;
+    border-radius: 50%;
+    margin:0px 8px;
+    text-align: center;
+}
+.product-size .size{
+    width: 60px;
+    height: 60px;
+}
+.product-size .size:hover{
+    background-color: #D3D3D3;
+}
+
+.product-btn-section{
+    display: flex;
+    margin-top:20px;
+}
+
+.add-to-cart-btn, .wishlist-btn{
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    width: 40%;
+    padding: 16px 22px;
+    margin:0px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    background: #FF527B;
+    color: white;
+    font-weight: 500;
+}
+.wishlist-btn{
+    border: 2px solid #e9e9ed;
+    color: black;
+    background: white;
+}
+.add-to-cart-btn:hover{
+    border: 2px solid whitesmoke;
+}
+.wishlist-btn:hover{
+    border: 2px solid black;
+}
+.product-detail-data{
+    margin: 20px;
+}
+.product-detail-data p{
+    line-height: 1.7;
+    font-size: 18px;
+}
+

@@ -1,0 +1,38 @@
+.footer-section{
+    margin: 40px 0px 0px 0px;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 15px;
+    text-decoration: none;
+    padding-bottom: 5px;
+    cursor: pointer;
+    line-height: normal;
+    
+ 
+}
+
+.links-footer-section, .category-footer-section, .brands-footer-section{
+ width: 28%;
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+} 
+
+p{
+    color: #696b79;
+}
+
+.brands-footer-section-icon{
+    margin:10px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.brands-footer-section-icon img{
+    width:58px;
+}
+.brands-footer-section-icon p{
+  text-align: left;
+}
+
