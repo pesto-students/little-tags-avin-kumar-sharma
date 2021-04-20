@@ -63,14 +63,18 @@
 
 .product-size .size{
     border: 1px solid #bfc0c6;
-    font-size: 16px;
+    font-size: 18px;
     padding: 18px;
     border-radius: 50%;
     margin:0px 8px;
+    text-align: center;
 }
-.product-size .size span{
-    width: 0;
-    height: 0;
+.product-size .size{
+    width: 60px;
+    height: 60px;
+}
+.product-size .size:hover{
+    background-color: #D3D3D3;
 }
 
 .product-btn-section{

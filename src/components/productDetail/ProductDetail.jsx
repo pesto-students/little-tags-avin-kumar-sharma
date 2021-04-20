@@ -1,12 +1,10 @@
 import React from "react";
-import Header from "../header/Header";
-import Footer from "../footer/Footer";
 import {FaShoppingBag, FaShoppingCart} from "react-icons/fa";
 import "./style.css";
 
 export default function ProductDetail() {
-return (<>
-    <Header />
+    
+return (
     <div className="product-detail-section">
         <div className="display-image">
             <img src="/img/products/product-detail1.jpg" alt="product-detail.jpg" />
@@ -25,10 +23,10 @@ return (<>
             </div>
             <h3 class="pdp-title">SELECT SIZE</h3>
             <div className="product-size">
-                <div className="size"><span>S</span></div>
-                <div className="size"><span>M</span></div>
-                <div className="size"><span>L</span></div>
-                <div className="size"><span>XL</span></div>
+                <div className="size">S</div>
+                <div className="size">M</div>
+                <div className="size">L</div>
+                <div className="size">XL</div>
             </div>
             <div className="product-btn-section">
                 <button className="add-to-cart-btn">
@@ -47,7 +45,5 @@ return (<>
             </div>
         </div>
     </div>
-    <Footer />
-</>
 )
 }

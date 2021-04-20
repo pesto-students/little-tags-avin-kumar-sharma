@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 
-export default function Carousel () {
+export default function Carousel ({imageArr}) {
 const [currentImg, setCurrentImg] = useState("banner1.jpg");
 const [count, setCount] = useState(0);
 
-const imageArr = ['banner1.jpg', 'banner2.jpg', 'banner3.jpg'];
 
 const handleNextClick = () => {
     if(count === 2) {
