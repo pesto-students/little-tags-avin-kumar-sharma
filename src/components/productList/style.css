@@ -3,6 +3,7 @@
   height: 800px;
 }
 .product-list{
+  width:82%;
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
