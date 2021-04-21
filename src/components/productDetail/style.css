@@ -6,15 +6,17 @@
 }
 .display-image{
     cursor: pointer;
-    width:60%;
+    max-width:60%;
     display: flex;
     flex-wrap: wrap;
 
 }
 .display-image img{
-    width:50%;
+    width:60%;
     padding:4px;
+    transition: transform .5s ease;
 }
+
 
 .product-detail-description{
     margin-left: 20px;
@@ -28,6 +30,7 @@
     font-size: 20px;
     opacity: .8;
     font-weight: 400;
+    text-transform: uppercase;
 }
 .pdp-discount-container {
     
@@ -94,6 +97,7 @@
     background: #FF527B;
     color: white;
     font-weight: 500;
+    transition: transform .5s ease;
 }
 .wishlist-btn{
     border: 2px solid #e9e9ed;
@@ -102,9 +106,11 @@
 }
 .add-to-cart-btn:hover{
     border: 2px solid whitesmoke;
+    transform: scale(1.1);
 }
 .wishlist-btn:hover{
     border: 2px solid black;
+    transform: scale(1.1);
 }
 .product-detail-data{
     margin: 20px;

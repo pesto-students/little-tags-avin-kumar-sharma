@@ -14,8 +14,7 @@ function App() {
      <BrowserRouter>
      <Header />
       <Switch>
-      <Route path={ROUTES.PRODUCT_DETAIL_PAGE}>
-          <ProductDetail/>
+      <Route path={ROUTES.PRODUCT_DETAIL_PAGE_WITH_PARAM} component={ProductDetail}>
         </Route>
         <Route path={ROUTES.PRODUCT_LIST_PAGE}>
           <ProductList/>

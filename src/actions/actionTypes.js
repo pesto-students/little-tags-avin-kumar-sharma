@@ -1,0 +1,4 @@
+export const ADD_TO_CART = "ADD_TO_CART";
+
+export const LOAD_PRODUCT_DATA = "LOAD_PRODUCT_DATA";
+export const LOAD_PRODUCT_DETAILS = "LOAD_PRODUCT_DETAILS";

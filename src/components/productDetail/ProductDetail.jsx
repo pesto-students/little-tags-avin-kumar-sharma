@@ -1,27 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {FaShoppingBag, FaShoppingCart} from "react-icons/fa";
+import {connect} from "react-redux";
+import  {loadProductDetails} from "../../actions/actions";
 import "./style.css";
 
-export default function ProductDetail() {
+const API_BASE_URL = "https://fakestoreapi.com/products";
+
+function ProductDetail({ match }) {
+
+    const [productDetails, setProductDetails] = useState({});
+
+    const fetchProductData = (productId) => {
+        fetch(`${API_BASE_URL}/${productId}`)
+            .then(res => res.json())
+            .then(result => {
+                setProductDetails(result);
+            }).catch(err => {
+            console.log(err);
+        })
+    };
+    
+    useEffect(()=>{
+        const productId = match.params.id;
+        fetchProductData(productId)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     
 return (
     <div className="product-detail-section">
         <div className="display-image">
-            <img src="/img/products/product-detail1.jpg" alt="product-detail.jpg" />
+            <img src={productDetails.image} alt="product-detail.jpg" />
+            {/* <img src="/img/products/product-detail1.jpg" alt="" />
             <img src="/img/products/product-detail1.jpg" alt="" />
-            <img src="/img/products/product-detail1.jpg" alt="" />
-            <img src="/img/products/product-detail1.jpg" alt="" />
+            <img src="/img/products/product-detail1.jpg" alt="" /> */}
         </div>
         <div className="product-detail-description">
-            <h1 class="pdp-title">HERE&amp;NOW</h1>
-            <h1 class="pdp-name">Men Navy Polo Collar T-shirt</h1>
-            <div class="pdp-discount-container"><span class="pdp-price"><strong>Rs. 599</strong></span>
-                <div class="pdp-mrp-verbiage" tabindex="0">
+            <h1 className="pdp-title">{productDetails.title}</h1>
+            <h1 className="pdp-name">{productDetails.category}</h1>
+            <div className="pdp-discount-container"><span className="pdp-price"><strong>Rs. {productDetails.price}</strong></span>
+                <div className="pdp-mrp-verbiage" tabIndex="0">
                     <div className="product-tax">(Incl. of all taxes)</div>
-                    <span class="pdp-discount">(50% OFF)</span>
+                    <span className="pdp-discount">(50% OFF)</span>
                 </div>
             </div>
-            <h3 class="pdp-title">SELECT SIZE</h3>
+            <h3 className="pdp-title">SELECT SIZE</h3>
             <div className="product-size">
                 <div className="size">S</div>
                 <div className="size">M</div>
@@ -36,14 +58,18 @@ return (
             </div>
             <div className="product-detail-data">
                 <p>
-                    100% Original Products
-                    Free Delivery on order above Rs. 799
-                    Pay on delivery might be available
-                    Easy 30 days returns and exchanges
-                    Try and Buy might be available
+                {productDetails.description}
                 </p>
             </div>
         </div>
     </div>
 )
 }
+
+const mapStateToProps = (state) => ({
+   // productDetails: state.productDetails
+  });
+  
+  const mapDispatchToProps = { loadProductDetails };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);
