@@ -33,7 +33,7 @@ function ProductList({productList = [], loadProductData}) {
 }
 
 const mapStateToProps = (state) => ({
-    productList: state.productList
+    productList: state.productDisplayReducer.productList
   });
 
 const mapDispatchToProps = { loadProductData };
