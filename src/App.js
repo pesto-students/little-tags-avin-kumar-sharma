@@ -6,6 +6,7 @@ import Footer from "./components/footer/Footer";
 import ProductList from "./components/productList/ProductList";
 import ProductDetail from "./components/productDetail/ProductDetail";
 import * as ROUTES from "./constants/routes"
+import  withAuthentication from "./components/Session/withAuthentication";
 import './App.css';
 
 function App() {
@@ -29,4 +30,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthentication(App);

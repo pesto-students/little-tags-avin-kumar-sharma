@@ -5,11 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
 import store from "./store/store";
+import FirebaseContext from "./components/Firebase/context";
+import Firebase from "./components/Firebase/firebase";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <App />
+      <FirebaseContext.Provider value = {new Firebase()}>
+         <App />
+       </FirebaseContext.Provider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
