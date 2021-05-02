@@ -18,7 +18,6 @@ function Header ({authorized, history}) {
             return firebase.user(authUser.user.uid).set({
                 email: authUser.user.email,
                 username: authUser.user.displayName,
-                roles: {},
             })
            
         })
