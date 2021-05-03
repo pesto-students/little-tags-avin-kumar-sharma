@@ -67,10 +67,10 @@ return(
             </div>
         </div>
 
-        <a href="/">
-            <FaShoppingBag /></a>
-        <a href="/">
-            <FaShoppingCart /></a>
+        <Link to={ROUTES.WISHLIST_PAGE}>
+            <FaShoppingBag /></Link>
+        <Link to={ROUTES.CART_PAGE}>
+            <FaShoppingCart /><sup>2</sup></Link>
     </div>
 </header>
 );
