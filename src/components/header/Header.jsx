@@ -69,8 +69,8 @@ return(
 
         <a href="/">
             <FaShoppingBag /></a>
-        <a href="/">
-            <FaShoppingCart /></a>
+        <Link to="/cart">
+            <FaShoppingCart /><sup>2</sup></Link>
     </div>
 </header>
 );

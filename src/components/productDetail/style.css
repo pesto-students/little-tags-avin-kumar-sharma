@@ -98,6 +98,7 @@
     color: white;
     font-weight: 500;
     transition: transform .5s ease;
+    text-align: center;
 }
 .wishlist-btn{
     border: 2px solid #e9e9ed;
