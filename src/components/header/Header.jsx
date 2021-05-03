@@ -67,9 +67,9 @@ return(
             </div>
         </div>
 
-        <a href="/">
-            <FaShoppingBag /></a>
-        <Link to="/cart">
+        <Link to={ROUTES.WISHLIST_PAGE}>
+            <FaShoppingBag /></Link>
+        <Link to={ROUTES.CART_PAGE}>
             <FaShoppingCart /><sup>2</sup></Link>
     </div>
 </header>

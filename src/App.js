@@ -6,6 +6,7 @@ import Footer from "./components/footer/Footer";
 import ProductList from "./components/productList/ProductList";
 import ProductDetail from "./components/productDetail/ProductDetail";
 import Cart from "./components/cart/Cart";
+import Wishlist from "./components/wishlist/Wishlist"
 import * as ROUTES from "./constants/routes"
 import  withAuthentication from "./components/Session/withAuthentication";
 import './App.css';
@@ -16,6 +17,9 @@ function App() {
      <BrowserRouter>
      <Header />
       <Switch>
+      <Route exact path={ROUTES.WISHLIST_PAGE}>
+          <Wishlist/>
+        </Route>
         <Route exact path={ROUTES.CART_PAGE}>
           <Cart/>
         </Route>
