@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {FaShoppingBag, FaShoppingCart} from "react-icons/fa";
 import {connect} from "react-redux";
 import  {loadProductDetails} from "../../actions/actions";
+import Loader from "../loader/Loader";
 import "./style.css";
 
 const API_BASE_URL = "https://fakestoreapi.com/products";
@@ -9,12 +10,14 @@ const API_BASE_URL = "https://fakestoreapi.com/products";
 function ProductDetail({ match }) {
 
     const [productDetails, setProductDetails] = useState({});
+    const [isLoading, setIsLoading] = useState('true');
 
     const fetchProductData = (productId) => {
         fetch(`${API_BASE_URL}/${productId}`)
             .then(res => res.json())
             .then(result => {
                 setProductDetails(result);
+                setIsLoading(false)
             }).catch(err => {
             console.log(err);
         })
@@ -25,6 +28,12 @@ function ProductDetail({ match }) {
         fetchProductData(productId)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    if(isLoading) {
+        return (
+            <Loader/>
+        );
+    }
     
 return (
     <div className="product-detail-section">
