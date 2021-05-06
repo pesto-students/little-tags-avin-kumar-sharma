@@ -39,7 +39,7 @@ export const orderToConfirm = (orderObject) => ({
     orderObject,
 })
 
-export const emptyCart = (cartObject) => ({
+export const emptyCart = () => ({
     type:EMPTY_CART,
 })
 
