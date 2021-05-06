@@ -1,9 +1,16 @@
-import React from "react";
 import CartEntry from "../cartentry/CartEntry";
-import {FaTags} from "react-icons/fa"
+import {FaTags} from "react-icons/fa";
+import {connect} from "react-redux"; 
 import "./style.css";
 
-export default function Cart() {
+function Cart({cart = [], totalQuantity = 0, totalPrice =0}) {
+   
+    
+    const mapCartEntries = cart.map((cartEntry, index)=>{
+       
+        return (<CartEntry key={index} entryData={cartEntry}/>)
+    });
+    
     return (
         <div className="cart-page-section">
             <div className="cart-section-left">
@@ -15,12 +22,11 @@ export default function Cart() {
                      </ul>
                 </div>
                 <div className="cart-items-tag">
-                    <p>My Shopping Bag(2 items)</p>
-                    <p>Total:Rs. 2,848</p>
+                    <p>My Shopping Bag({totalQuantity} items)</p>
+                    <p>Total:Rs. {totalPrice}</p>
                 </div>
                 {/* Display Cart Entry */}
-                <CartEntry/>
-                <CartEntry/>
+                {mapCartEntries}
                 
             </div>
             {/* Cart total price and discount section */}
@@ -33,7 +39,7 @@ export default function Cart() {
                     <div className="cart-total-price">
                         <div className="price-row">
                             <p>Total MRP</p>
-                            <p>Rs.3,598</p>
+                            <p>Rs. {totalPrice}</p>
                         </div>
                         <div className="price-row">
                             <p>Discount on MRP</p>
@@ -49,7 +55,7 @@ export default function Cart() {
                         </div>
                         <div className="price-row final-price">
                             <p><strong>Total Amount</strong></p>
-                            <p><strong>Rs. 2848</strong></p>
+                            <p><strong>Rs. {totalPrice}</strong></p>
                         </div>
                     </div>
                     <div className="order-place-btn-section">
@@ -62,3 +68,10 @@ export default function Cart() {
         </div>
     );
 }
+
+const mapStateToProps = (state) => ({
+    cart: state.cartReducer.cart,
+    totalQuantity:state.cartReducer.totalQuantity,
+    totalPrice:state.cartReducer.totalPrice,
+});
+export default connect(mapStateToProps)(Cart);

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {FaUserAlt, FaShoppingCart, FaShoppingBag} from "react-icons/fa"
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
@@ -7,9 +7,10 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import "./style.css";
 
-function Header ({authorized, history}) {
+function Header ({authorized, history, totalQuantity}) {
     const firebase = useContext(FirebaseContext);
     const [errorMessage, setErrorMessage] = useState("");
+    const [cartItemsCount, setCartItemsCount] = useState(0);
 
     const handleLogin = () => {
         firebase.doGoogleSignIn()
@@ -18,6 +19,7 @@ function Header ({authorized, history}) {
             return firebase.user(authUser.user.uid).set({
                 email: authUser.user.email,
                 username: authUser.user.displayName,
+                uid:authUser.user.uid
             })
            
         })
@@ -32,6 +34,13 @@ function Header ({authorized, history}) {
             history.push(ROUTES.HOME_PAGE);
         });
     }
+
+    useEffect(()=>{
+
+        setCartItemsCount(totalQuantity);
+    
+    }, [totalQuantity])
+
 return(
 <header>
     <div className="brand-logo">
@@ -67,17 +76,18 @@ return(
             </div>
         </div>
 
-        <Link to={ROUTES.WISHLIST_PAGE}>
-            <FaShoppingBag /></Link>
+       {authorized ? <Link to={ROUTES.WISHLIST_PAGE}><FaShoppingBag /></Link>: "" } 
+        
         <Link to={ROUTES.CART_PAGE}>
-            <FaShoppingCart /><sup>2</sup></Link>
+            <FaShoppingCart /><sup>{cartItemsCount}</sup></Link>
     </div>
 </header>
 );
 }
 
 const mapStateToProps = (state) => ({
-    authorized : state.sessionReducer.authUser
+    authorized : state.sessionReducer.authUser,
+    totalQuantity : state.cartReducer.totalQuantity
 });
 
 export default withRouter(connect(mapStateToProps)(Header));

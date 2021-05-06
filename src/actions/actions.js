@@ -1,4 +1,5 @@
-import {LOAD_PRODUCT_DATA, LOAD_PRODUCT_DETAILS, SET_AUTH_USER} from "./actionTypes";
+import {LOAD_PRODUCT_DATA, LOAD_PRODUCT_DETAILS, 
+    SET_AUTH_USER, ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART, FETCH_CART_FOR_CURRENT_USER} from "./actionTypes";
 
 export const loadProductData = (productList) => ({
     type:LOAD_PRODUCT_DATA,
@@ -15,3 +16,20 @@ export const setAuthUSer = (authUser) => ({
     authUser,
 })
 
+
+export const addProductToCart = (product,authUser) => ({
+    type: ADD_PRODUCT_TO_CART,
+    product,
+    authUser
+})
+
+export const removeProductFromCart = (productId) => ({
+    type:REMOVE_PRODUCT_FROM_CART,
+    productId
+})
+
+export const fetchCartForCurrentUser = (userUid, currentCart) => ({
+    type:FETCH_CART_FOR_CURRENT_USER,
+    userUid,
+    currentCart,
+})

@@ -24,6 +24,8 @@ class Firebase {
 
     user = (uid) => this.db.ref(`/users/${uid}`);
 
+    carts = (cart) => this.db.ref(`/carts/${cart.cartid}`);
+
     onAuthChangeListener = (next, fallback = () => {}) => {
         return this.auth.onAuthStateChanged(authUser => {
             if(authUser) {
@@ -38,7 +40,16 @@ class Firebase {
                         ...dbUser
                     };
                     console.log(`authlistener :: listener :: ${user}`);
-                    next(user);
+                    this.db.ref(`/carts/${user.uid}`)
+                    .once('value')
+                    .then((snapshot) => {
+                    
+                       const currentCart = snapshot.val();
+                       next(user, currentCart);
+                    }).catch((error) => {
+                        console.log("ERROR:: IN FETCHING CART", error);
+                    })
+                   
                 })
                 
             } else {
@@ -46,6 +57,17 @@ class Firebase {
                 fallback();
             }
         });
+    };
+
+    storeCart = (cart) => {
+        console.log(cart)
+        try{
+        this.carts(cart).set({
+            cart
+        })
+       } catch (error) {
+           console.log("ERROR :: IN STORING CART ::", error);
+       }
     }
 
 }

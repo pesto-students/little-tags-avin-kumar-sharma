@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {FaShoppingBag, FaShoppingCart} from "react-icons/fa";
 import {connect} from "react-redux";
-import  {loadProductDetails} from "../../actions/actions";
+import  {addProductToCart} from "../../actions/actions";
 import Loader from "../loader/Loader";
 import "./style.css";
 
 const API_BASE_URL = "https://fakestoreapi.com/products";
 
-function ProductDetail({ match }) {
-
+function ProductDetail({ match, addProductToCart , authUser = {email:null, username:null, uid:null}}) {
+    
     const [productDetails, setProductDetails] = useState({});
     const [isLoading, setIsLoading] = useState('true');
 
@@ -22,6 +22,14 @@ function ProductDetail({ match }) {
             console.log(err);
         })
     };
+
+    const handleAddToCart = () =>{
+        try{
+        addProductToCart(productDetails, authUser);
+         } catch (error) {
+            console.log("ERROR :: IN ADDING PRODUCT :: TO CART", error)
+        }
+    }
     
     useEffect(()=>{
         const productId = match.params.id;
@@ -60,7 +68,7 @@ return (
                 <div className="size">XL</div>
             </div>
             <div className="product-btn-section">
-                <button className="add-to-cart-btn">
+                <button className="add-to-cart-btn" onClick={handleAddToCart}>
                     <FaShoppingCart />&nbsp;ADD TO BAG</button>
                 <button className="wishlist-btn">
                     <FaShoppingBag />&nbsp;WISHLIST</button>
@@ -76,9 +84,10 @@ return (
 }
 
 const mapStateToProps = (state) => ({
-   // productDetails: state.productDetails
-  });
+  cart: state.cartReducer.cart,
+  authUser: state.sessionReducer.authUser
+});
   
-  const mapDispatchToProps = { loadProductDetails };
+  const mapDispatchToProps = { addProductToCart };
   
   export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);
