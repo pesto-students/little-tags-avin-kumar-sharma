@@ -1,4 +1,4 @@
-import {ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART, FETCH_CART_FOR_CURRENT_USER} from "../actions/actionTypes";
+import {ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART, FETCH_CART_FOR_CURRENT_USER, EMPTY_CART} from "../actions/actionTypes";
 import { v4 } from "uuid";
 import firebase from "firebase/app";
 const initialState = {
@@ -103,6 +103,19 @@ export default function cartReducer (state = initialState, action) {
                 case FETCH_CART_FOR_CURRENT_USER:
                     const {currentCart} = action;
                 return {...state, ...currentCart};
+
+
+                case EMPTY_CART:
+                    console.log("empty cart state")
+                    const initialCartState = {
+                        userUid:null,
+                        cartid:null,
+                        cart:[],
+                        totalQuantity:0,
+                        totalPrice:0
+                    }
+                   
+                   return {...state, ...initialCartState}
 
             default: 
             return state;
