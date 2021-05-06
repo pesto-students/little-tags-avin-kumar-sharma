@@ -44,7 +44,7 @@ function Header ({authorized, history, totalQuantity}) {
 return(
 <header>
     <div className="brand-logo">
-        <Link to={ROUTES.HOME_PAGE}>logo</Link>
+        <Link to={ROUTES.HOME_PAGE}>Ecomm Cart</Link>
     </div>
     <div className="left-menu">
         <Link to={ROUTES.PRODUCT_LIST_PAGE}> MENS</Link>

@@ -7,6 +7,7 @@ import ProductList from "./components/productList/ProductList";
 import ProductDetail from "./components/productDetail/ProductDetail";
 import Cart from "./components/cart/Cart";
 import Wishlist from "./components/wishlist/Wishlist"
+import Order from "./components/order/Order"
 import * as ROUTES from "./constants/routes"
 import  withAuthentication from "./components/Session/withAuthentication";
 import './App.css';
@@ -17,6 +18,9 @@ function App() {
      <BrowserRouter>
      <Header />
       <Switch>
+      <Route exact path={ROUTES.ORDER_CONFIRMATION}>
+          <Order/>
+        </Route>
       <Route exact path={ROUTES.WISHLIST_PAGE}>
           <Wishlist/>
         </Route>
