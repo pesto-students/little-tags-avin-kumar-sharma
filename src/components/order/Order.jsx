@@ -6,7 +6,7 @@ import {withRouter} from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import "./style.css";
 
-function Cart({cart = [], totalQuantity = 0, totalPrice =0, history}) {
+function Order({cart = [], totalQuantity = 0, totalPrice =0, history, cartid}) {
    
     const [isLoading, setIsLoading] = useState('true');
 
@@ -36,6 +36,7 @@ function Cart({cart = [], totalQuantity = 0, totalPrice =0, history}) {
             <div className="cart-section-left">
                 <div className="cart-offer">
                     <p><strong>Order Confirmation</strong></p>
+                    <p><strong>Tracking id: {cartid}</strong></p>
                      
                 </div>
                 <div className="cart-items-tag">
@@ -85,10 +86,10 @@ function Cart({cart = [], totalQuantity = 0, totalPrice =0, history}) {
 }
 
 const mapStateToProps = (state) => ({
-    cart: state.cartReducer.cart,
-    totalQuantity:state.cartReducer.totalQuantity,
-    totalPrice:state.cartReducer.totalPrice,
-    userUid: state.cartReducer.userUid,
-    cartid:state.cartReducer.cartid,
+    cart: state.orderReducer.cart,
+    totalQuantity:state.orderReducer.totalQuantity,
+    totalPrice:state.orderReducer.totalPrice,
+    userUid: state.orderReducer.userUid,
+    cartid:state.orderReducer.cartid,
 });
-export default withRouter(connect(mapStateToProps)(Cart));
+export default withRouter(connect(mapStateToProps)(Order));

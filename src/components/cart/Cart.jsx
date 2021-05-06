@@ -2,11 +2,12 @@ import CartEntry from "../cartentry/CartEntry";
 import {FaTags} from "react-icons/fa";
 import {connect} from "react-redux"; 
 import {orderToConfirm} from "../../actions/actions"
+import {emptyCart} from "../../actions/actions";
 import {withRouter} from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import "./style.css";
 
-function Cart({cart = [], totalQuantity = 0, totalPrice =0, userUid=null, cartid=null, orderToConfirm = ()=> {}, history}) {
+function Cart({cart = [], totalQuantity = 0, totalPrice =0, userUid=null, cartid=null, orderToConfirm = ()=> {}, history, emptyCart}) {
    
     const mapCartEntries = cart.map((cartEntry, index)=>{
        
@@ -26,6 +27,7 @@ function Cart({cart = [], totalQuantity = 0, totalPrice =0, userUid=null, cartid
         }
 
         orderToConfirm(orderObject);
+        emptyCart();
         history.push(ROUTES.ORDER_CONFIRMATION)
      }
     }
@@ -96,6 +98,6 @@ const mapStateToProps = (state) => ({
     cartid:state.cartReducer.cartid,
 });
 
-const mapDispatchToProps = {orderToConfirm}
+const mapDispatchToProps = {orderToConfirm, emptyCart}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Cart));
