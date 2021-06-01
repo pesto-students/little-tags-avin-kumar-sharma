@@ -46,7 +46,7 @@ Please note that UI design mocks are provided only for reference and benchmarkin
 
 [Zeplin web link](https://zpl.io/a7j7MJE)
 
-# Uocoming Features
+# Upcoming Features
 
 1. Wishlist
 2. Order History
