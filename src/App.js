@@ -18,6 +18,8 @@ function App() {
      <BrowserRouter>
      <Header />
       <Switch>
+      <Route exact path={ROUTES.CATEGORIES_PAGE_PARAM}  component={ProductList}>
+        </Route>
       <Route exact path={ROUTES.ORDER_CONFIRMATION}>
           <Order/>
         </Route>
@@ -27,9 +29,10 @@ function App() {
         <Route exact path={ROUTES.CART_PAGE}>
           <Cart/>
         </Route>
-      <Route path={ROUTES.PRODUCT_DETAIL_PAGE_WITH_PARAM} component={ProductDetail}>
+        
+      <Route exact path={ROUTES.PRODUCT_DETAIL_PAGE_WITH_PARAM} component={ProductDetail}>
         </Route>
-        <Route path={ROUTES.PRODUCT_LIST_PAGE}>
+        <Route exact path={ROUTES.PRODUCT_LIST_PAGE}>
           <ProductList/>
         </Route>
         <Route path={ROUTES.HOME_PAGE}>

@@ -1,6 +1,7 @@
 import {
     LOAD_PRODUCT_DATA,
-    LOAD_PRODUCT_DETAILS
+    LOAD_PRODUCT_DETAILS,
+    EMPTY_PRODUCT_LIST
 } from "../actions/actionTypes";
 
 const API_BASE_URL = "https://fakestoreapi.com/products";
@@ -35,6 +36,8 @@ export default function productDisplayReducer(state = initialState, action) {
             return {
                 ...state, productDetails: {}
             };
+            case EMPTY_PRODUCT_LIST:
+                return {...state, productList:[]}
         
         default:
             return state;

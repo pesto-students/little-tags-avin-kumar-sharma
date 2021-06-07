@@ -1,5 +1,5 @@
 import {LOAD_PRODUCT_DATA, LOAD_PRODUCT_DETAILS, 
-    SET_AUTH_USER, ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART, FETCH_CART_FOR_CURRENT_USER, ORDER_TO_CONFIRM, EMPTY_CART} from "./actionTypes";
+    SET_AUTH_USER, ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART, FETCH_CART_FOR_CURRENT_USER, ORDER_TO_CONFIRM, EMPTY_CART, EMPTY_PRODUCT_LIST} from "./actionTypes";
 
 export const loadProductData = (productList) => ({
     type:LOAD_PRODUCT_DATA,
@@ -41,5 +41,9 @@ export const orderToConfirm = (orderObject) => ({
 
 export const emptyCart = () => ({
     type:EMPTY_CART,
+})
+
+export const emptyProductList = () => ({
+    type:EMPTY_PRODUCT_LIST    
 })
 

@@ -1,14 +1,15 @@
 .footer-section{
-    margin: 40px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
     display: flex;
     justify-content: space-evenly;
     font-size: 15px;
     text-decoration: none;
+    padding-top: 20px;
     padding-bottom: 5px;
     cursor: pointer;
     line-height: normal;
     width:100%;
- 
+    border: 1px solid #e9e9ed;
 }
 
 .links-footer-section, .category-footer-section, .brands-footer-section{
@@ -18,7 +19,7 @@
  align-items: flex-start;
 } 
 
-p{
+.category-footer-section a{
     color: #696b79;
 }
 
@@ -34,5 +35,11 @@ p{
 }
 .brands-footer-section-icon p{
   text-align: left;
+}
+.footer-bottom{
+    padding:14px;
+    border: 1px solid #e9e9ed;
+    text-align:center;
+    color: #e9e9ed;
 }
 

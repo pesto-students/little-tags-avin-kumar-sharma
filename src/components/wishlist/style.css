@@ -3,7 +3,7 @@
     padding:30px;
     width:100%;
     cursor: pointer;
-   
+    min-height: 480px;
 }
 
 

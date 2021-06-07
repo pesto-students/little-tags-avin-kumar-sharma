@@ -4,8 +4,9 @@ import  {removeProductFromCart} from "../../actions/actions";
 
 function CartEntry({entryData , removeProductFromCart = ()=>{}}){
     
+   
 
-    const handleRemoveProductFromCart = (productId) => {
+    const handleRemoveProductFromCart = (productId, product) => {
         if(productId) {
             removeProductFromCart(productId);
         }
@@ -19,6 +20,7 @@ function CartEntry({entryData , removeProductFromCart = ()=>{}}){
     }
     return (
         <div className="cart-left-section-entries">
+             
                     <div className="cart-section-entry">
                     <div className="cart-entry-display-image">
                         <img src={entryData.product.image} alt="product"/>
@@ -33,7 +35,7 @@ function CartEntry({entryData , removeProductFromCart = ()=>{}}){
                     </div>
                     </div>
                     <div className="cart-entry-section-btn">
-                        <button className="cart-entry-remove-btn" onClick={()=>handleRemoveProductFromCart(entryData.productId)}>REMOVE</button>
+                        <button className="cart-entry-remove-btn" onClick={()=>handleRemoveProductFromCart(entryData.productId, entryData.product)}>REMOVE</button>
                     </div>
                 </div>
     )

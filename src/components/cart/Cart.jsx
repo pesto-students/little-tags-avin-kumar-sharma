@@ -1,6 +1,6 @@
 import CartEntry from "../cartentry/CartEntry";
 import {FaTags} from "react-icons/fa";
-import {connect} from "react-redux"; 
+import {connect} from "react-redux";
 import {orderToConfirm} from "../../actions/actions"
 import {emptyCart} from "../../actions/actions";
 import {withRouter} from "react-router-dom";
@@ -80,7 +80,7 @@ function Cart({cart = [], totalQuantity = 0, totalPrice =0, userUid=null, cartid
                         </div>
                     </div>
                     <div className="order-place-btn-section">
-                        <button className="place-order-btn" onClick={handleConfirmOrder}>
+                        <button className="place-order-btn" onClick={handleConfirmOrder} disabled = { mapCartEntries.length > 0 ? false:true}>
                             PLACE ORDER
                         </button>
                     </div>
