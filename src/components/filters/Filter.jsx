@@ -1,17 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import * as ROUTES from "../../constants/routes";
 import "./style.css";
 
 export default function Filter(){
+    
     return (
         <div className="product-filter-section">
           <div className="product-category-filter">
-          <h4 className="filter-title">Category</h4>
-              <div className="filter-item"><input type="radio" name="category-filter" value="Men"/>Men</div>
-              <div className="filter-item"><input type="radio" name="category-filter" value="Women"/>Women</div>
-              <div className="filter-item"><input type="radio" name="category-filter" value="Electronics"/>Electronics</div>
-              <div className="filter-item"><input type="radio" name="category-filter" value="Jewellery"/>Jewellery</div>
+          <h4 className="filter-title">Filters</h4>
+              <div className="filter-title"><Link to={`${ROUTES.CATEGORIES_PAGE}/mens`}>Mens</Link></div>
+              <div className="filter-title"><Link to={`${ROUTES.CATEGORIES_PAGE}/womens`}>Womens</Link></div>
+              <div className="filter-title"><Link to={`${ROUTES.CATEGORIES_PAGE}/electronics`}>Electronics</Link></div>
+              <div className="filter-title"><Link to={`${ROUTES.CATEGORIES_PAGE}/jewelery`}>Jewellery</Link></div>
+              <div className="filter-title"><Link to={ROUTES.PRODUCT_LIST_PAGE}>All</Link></div>
           </div>
-          <div className="product-brand-filter">
+          {/* <div className="product-brand-filter">
           <h4 className="filter-title">Brands</h4>
               <div className="filter-item"><input type="checkbox" name="brand-filter" value="Roadster"/>Roadster</div>
               <div className="filter-item"><input type="checkbox" name="brand-filter" value="Levis"/>Levis</div>
@@ -24,7 +28,7 @@ export default function Filter(){
               <div className="filter-item"><input type="checkbox" name="price-filter" value="1000-1500"/>Rs.1000 to 1500</div>
               <div className="filter-item"><input type="checkbox" name="price-filter" value="1500-2000"/>Rs.1500 to 2000</div>
               <div className="filter-item"><input type="checkbox" name="price-filter" value="2000-2500"/>Rs.2000 to 2500</div>
-          </div>
+          </div> */}
 
         </div>
     );

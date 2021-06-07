@@ -9,12 +9,13 @@
     max-width:60%;
     display: flex;
     flex-wrap: wrap;
-
 }
-.display-image img{
-    width:60%;
+.display-image .display-imag-tile img{
+    width:100%;
+    height: 100%;
     padding:4px;
     transition: transform .5s ease;
+    object-fit: contain;
 }
 
 
@@ -120,4 +121,25 @@
     line-height: 1.7;
     font-size: 18px;
 }
+.display-imag-tile{
+    width: 100%;
+    height: 500px;
+}
+.display-popup{
+    display:flex;
+}
+.display-popup .display-popup-img-section{ 
+    width: 18%;
+}
+.display-popup .display-popup-img-section img{
+    width: 100%;
+    object-fit: contain;
+}
+.display-popup-detail-section{
+    width: 82%;
+    color: white;
+    padding-left: 10px;
+}
+
+
 

@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import * as ROUTES from "../../constants/routes";
 import "./style.css";
 
-export default function Brand ({brandData, folderName}) {
-   const brandMapper = brandData.map((item, index) => {
+export default function Brand ({brandData, folderName, parent, linkDisable = true}) {
+   const brandMapper = brandData.map(({name,link}, index) => {
        return ( <div className="brand" key={index}>
-          <Link to={ROUTES.PRODUCT_LIST_PAGE}><img src={`/img/${folderName}/${item}`} alt={item}/></Link>
+         {linkDisable ? <Link to={`${parent}/${link}`}><img src={`/img/${folderName}/${name}`} alt={name}/></Link>
+         : <img src={`/img/${folderName}/${name}`} alt={name} style={{cursor:"auto"}}/>}
        </div> )
     })
     return (

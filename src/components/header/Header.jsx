@@ -24,7 +24,8 @@ function Header ({authorized, history, totalQuantity}) {
            
         })
         .catch((error) => {
-            setErrorMessage(error);
+          setErrorMessage("LOGIN WINDOW:: CLOSED");
+         
         })
     }
 
@@ -47,10 +48,10 @@ return(
         <Link to={ROUTES.HOME_PAGE}>Ecomm Cart</Link>
     </div>
     <div className="left-menu">
-        <Link to={ROUTES.PRODUCT_LIST_PAGE}> MENS</Link>
-        <Link to={ROUTES.PRODUCT_LIST_PAGE}> WOMENS</Link>
-        <Link to={ROUTES.PRODUCT_LIST_PAGE}> ELECTRONICS</Link>
-        <Link to={ROUTES.PRODUCT_LIST_PAGE}> JEWELWRY</Link>
+        <Link to={`${ROUTES.CATEGORIES_PAGE}/mens`}> MENS</Link>
+        <Link to={`${ROUTES.CATEGORIES_PAGE}/womens`}> WOMENS</Link>
+        <Link to={`${ROUTES.CATEGORIES_PAGE}/electronics`}> ELECTRONICS</Link>
+        <Link to={`${ROUTES.CATEGORIES_PAGE}/jewelery`}> JEWELLERY</Link>
     </div>
     <div className="right-menu">
         <div className="search-bar">

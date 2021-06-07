@@ -21,7 +21,7 @@ function WishList() {
                 
                 <CartEntry entryData={cartEntry}/>
                 <CartEntry entryData={cartEntry}/>
-               
+                
             </div>
             
         </div>

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {FaShoppingBag, FaShoppingCart} from "react-icons/fa";
+import {ToastContainer, toast} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 import {connect} from "react-redux";
 import  {addProductToCart} from "../../actions/actions";
 import Loader from "../loader/Loader";
@@ -23,10 +25,23 @@ function ProductDetail({ match, addProductToCart , authUser = {email:null, usern
         })
     };
 
+    const DisplayAddedProduct = ({productDetails}) => (
+        <div  className="display-popup">
+            <div className="display-popup-img-section">
+              <img src={productDetails.image} alt="product-detail.jpg" width="30"/>
+             </div>
+             <div className="display-popup-detail-section">
+                 <h5>{productDetails.title}</h5>
+                 <p>Rs.{productDetails.price}</p>
+             </div>
+        </div>
+    )
+
     const handleAddToCart = () =>{
         try{
-        addProductToCart(productDetails, authUser);
-         } catch (error) {
+            addProductToCart(productDetails, authUser);
+            toast( <DisplayAddedProduct productDetails ={productDetails}/>, {type:"dark", autoClose: 2000});
+          } catch (error) {
             console.log("ERROR :: IN ADDING PRODUCT :: TO CART", error)
         }
     }
@@ -45,8 +60,11 @@ function ProductDetail({ match, addProductToCart , authUser = {email:null, usern
     
 return (
     <div className="product-detail-section">
+         <ToastContainer position="top-right"/>
         <div className="display-image">
+            <div className="display-imag-tile">
             <img src={productDetails.image} alt="product-detail.jpg" />
+            </div>
             {/* <img src="/img/products/product-detail1.jpg" alt="" />
             <img src="/img/products/product-detail1.jpg" alt="" />
             <img src="/img/products/product-detail1.jpg" alt="" /> */}
@@ -60,13 +78,15 @@ return (
                     <span className="pdp-discount">(50% OFF)</span>
                 </div>
             </div>
+            {productDetails.category === 'jewelery' || productDetails.category === 'electronics' ? "" :
+            <div>
             <h3 className="pdp-title">SELECT SIZE</h3>
             <div className="product-size">
                 <div className="size">S</div>
                 <div className="size">M</div>
                 <div className="size">L</div>
                 <div className="size">XL</div>
-            </div>
+            </div> </div>}
             <div className="product-btn-section">
                 <button className="add-to-cart-btn" onClick={handleAddToCart}>
                     <FaShoppingCart />&nbsp;ADD TO BAG</button>

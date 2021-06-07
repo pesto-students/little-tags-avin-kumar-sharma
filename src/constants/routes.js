@@ -5,3 +5,5 @@ export const PRODUCT_DETAIL_PAGE_WITH_PARAM = "/productDetail/:id";
 export const CART_PAGE = "/cart"
 export const WISHLIST_PAGE = "/wishlist"
 export const ORDER_CONFIRMATION = "/confirmation"
+export const CATEGORIES_PAGE = "/categories"
+export const CATEGORIES_PAGE_PARAM = "/categories/:id"
