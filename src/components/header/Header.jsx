@@ -9,7 +9,7 @@ import "./style.css";
 
 function Header ({authorized, history, totalQuantity}) {
     const firebase = useContext(FirebaseContext);
-    const [errorMessage, setErrorMessage] = useState("");
+    //const [errorMessage, setErrorMessage] = useState("");
     const [cartItemsCount, setCartItemsCount] = useState(0);
     const [userId, setUserId] = useState("");
 
@@ -70,7 +70,7 @@ return(
                     <button className="btn-login" onClick={handleLogin}>LOGIN/SIGNUP</button>
                     }
                     
-                    { !!errorMessage && <p style={{color: "red"}}>{errorMessage}</p>}
+                    {/* { !!errorMessage && <p style={{color: "red"}}>{errorMessage}</p>} */}
                 </div>
                 <div className="dropdown-item dropdown-login">
                 <Link to={`${ROUTES.ORDER_HISTORY_PAGE}/${userId}`}> Orders</Link>
