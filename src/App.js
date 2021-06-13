@@ -8,6 +8,7 @@ import ProductDetail from "./components/productDetail/ProductDetail";
 import Cart from "./components/cart/Cart";
 import Wishlist from "./components/wishlist/Wishlist"
 import Order from "./components/order/Order"
+import OrderHistory from "./components/orderhistory/OrderHistory";
 import * as ROUTES from "./constants/routes"
 import  withAuthentication from "./components/Session/withAuthentication";
 import './App.css';
@@ -18,6 +19,9 @@ function App() {
      <BrowserRouter>
      <Header />
       <Switch>
+      <Route exact path={ROUTES.ORDER_HISTORY_PAGE_PARAM}>
+        <OrderHistory/>
+      </Route>
       <Route exact path={ROUTES.CATEGORIES_PAGE_PARAM}  component={ProductList}>
         </Route>
       <Route exact path={ROUTES.ORDER_CONFIRMATION}>

@@ -1,49 +1,53 @@
-import {LOAD_PRODUCT_DATA, LOAD_PRODUCT_DETAILS, 
-    SET_AUTH_USER, ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART, FETCH_CART_FOR_CURRENT_USER, ORDER_TO_CONFIRM, EMPTY_CART, EMPTY_PRODUCT_LIST} from "./actionTypes";
+import * as ActionTypes from "./actionTypes";
 
 export const loadProductData = (productList) => ({
-    type:LOAD_PRODUCT_DATA,
+    type:ActionTypes.LOAD_PRODUCT_DATA,
     productList,
 })
 
 export const loadProductDetails = (productId) => ({
-    type:LOAD_PRODUCT_DETAILS,
+    type:ActionTypes.LOAD_PRODUCT_DETAILS,
     productId,
 })
 
 export const setAuthUSer = (authUser) => ({
-    type:SET_AUTH_USER,
+    type:ActionTypes.SET_AUTH_USER,
     authUser,
 })
 
 
 export const addProductToCart = (product,authUser) => ({
-    type: ADD_PRODUCT_TO_CART,
+    type: ActionTypes.ADD_PRODUCT_TO_CART,
     product,
     authUser
 })
 
 export const removeProductFromCart = (productId) => ({
-    type:REMOVE_PRODUCT_FROM_CART,
+    type:ActionTypes.REMOVE_PRODUCT_FROM_CART,
     productId
 })
 
 export const fetchCartForCurrentUser = (userUid, currentCart) => ({
-    type:FETCH_CART_FOR_CURRENT_USER,
+    type:ActionTypes.FETCH_CART_FOR_CURRENT_USER,
     userUid,
     currentCart,
 })
 
 export const orderToConfirm = (orderObject) => ({
-    type:ORDER_TO_CONFIRM,
+    type:ActionTypes.ORDER_TO_CONFIRM,
     orderObject,
 })
 
 export const emptyCart = () => ({
-    type:EMPTY_CART,
+    type:ActionTypes.EMPTY_CART,
 })
 
 export const emptyProductList = () => ({
-    type:EMPTY_PRODUCT_LIST    
+    type:ActionTypes.EMPTY_PRODUCT_LIST    
+})
+
+export const fetchOrderHistory = (ordersList) =>({
+    type:ActionTypes.ORDER_HISTORY_DATA,
+    ordersList
 })
 

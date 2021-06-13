@@ -11,11 +11,11 @@ function Header ({authorized, history, totalQuantity}) {
     const firebase = useContext(FirebaseContext);
     const [errorMessage, setErrorMessage] = useState("");
     const [cartItemsCount, setCartItemsCount] = useState(0);
+    const [userId, setUserId] = useState("");
 
     const handleLogin = () => {
         firebase.doGoogleSignIn()
         .then((authUser) => {
-            console.log(authUser);
             return firebase.user(authUser.user.uid).set({
                 email: authUser.user.email,
                 username: authUser.user.displayName,
@@ -24,7 +24,7 @@ function Header ({authorized, history, totalQuantity}) {
            
         })
         .catch((error) => {
-          setErrorMessage("LOGIN WINDOW:: CLOSED");
+          console.log("LOGIN WINDOW:: CLOSED");
          
         })
     }
@@ -37,10 +37,14 @@ function Header ({authorized, history, totalQuantity}) {
     }
 
     useEffect(()=>{
-
         setCartItemsCount(totalQuantity);
-    
     }, [totalQuantity])
+
+    useEffect(()=>{
+        if(authorized){
+            setUserId(authorized.uid)
+        }
+    },[authorized])
 
 return(
 <header>
@@ -69,7 +73,7 @@ return(
                     { !!errorMessage && <p style={{color: "red"}}>{errorMessage}</p>}
                 </div>
                 <div className="dropdown-item dropdown-login">
-                    <a href="/">Orders</a>
+                <Link to={`${ROUTES.ORDER_HISTORY_PAGE}/${userId}`}> Orders</Link>
                 </div>
                 <div className="dropdown-item dropdown-login">
                 <a href="/">Contact Us</a>
@@ -88,7 +92,8 @@ return(
 
 const mapStateToProps = (state) => ({
     authorized : state.sessionReducer.authUser,
-    totalQuantity : state.cartReducer.totalQuantity
+    totalQuantity : state.cartReducer.totalQuantity,
+    
 });
 
 export default withRouter(connect(mapStateToProps)(Header));

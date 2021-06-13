@@ -3,7 +3,7 @@ import {FaShoppingBag, FaShoppingCart} from "react-icons/fa";
 import {ToastContainer, toast} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import {connect} from "react-redux";
-import  {addProductToCart} from "../../actions/actions";
+import {addProductToCart} from "../../actions/actions";
 import Loader from "../loader/Loader";
 import "./style.css";
 

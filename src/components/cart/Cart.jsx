@@ -16,14 +16,14 @@ function Cart({cart = [], totalQuantity = 0, totalPrice =0, userUid=null, cartid
 
     const handleConfirmOrder = () => {
         if(userUid !== null) {
-
-            console.log("start order removal")
+        console.log("start order removal")
         const orderObject = {
             userUid,
             cartid: userUid ? userUid: cartid, 
             cart:[...cart], 
             totalQuantity, 
-            totalPrice
+            totalPrice,
+            date:new Date().toJSON().slice(0,10).replace(/-/g,'/')
         }
 
         orderToConfirm(orderObject);
@@ -90,13 +90,16 @@ function Cart({cart = [], totalQuantity = 0, totalPrice =0, userUid=null, cartid
     );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => {
+    return {
     cart: state.cartReducer.cart,
     totalQuantity:state.cartReducer.totalQuantity,
     totalPrice:state.cartReducer.totalPrice,
     userUid: state.cartReducer.userUid,
     cartid:state.cartReducer.cartid,
-});
+    }
+
+};
 
 const mapDispatchToProps = {orderToConfirm, emptyCart}
 
