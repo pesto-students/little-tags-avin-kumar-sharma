@@ -49,7 +49,7 @@ function Header ({authorized, history, totalQuantity}) {
 return(
 <header>
     <div className="brand-logo">
-        <Link to={ROUTES.HOME_PAGE}>Ecomm Cart</Link>
+        <Link to={ROUTES.HOME_PAGE}><img src="/img/logo.png" alt="logo" id="logo"/></Link>
     </div>
     <div className="left-menu">
         <Link to={`${ROUTES.CATEGORIES_PAGE}/mens`}> MENS</Link>
@@ -72,9 +72,10 @@ return(
                     
                     {/* { !!errorMessage && <p style={{color: "red"}}>{errorMessage}</p>} */}
                 </div>
+                {authorized ?
                 <div className="dropdown-item dropdown-login">
                 <Link to={`${ROUTES.ORDER_HISTORY_PAGE}/${userId}`}> Orders</Link>
-                </div>
+                </div> : ""}
                 <div className="dropdown-item dropdown-login">
                 <a href="/">Contact Us</a>
                 </div>
