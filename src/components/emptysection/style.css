@@ -1,0 +1,19 @@
+.no-items-section{
+    display: flex;
+    justify-content: center;
+    margin:20px auto;
+}
+#shop-btn{
+    text-align: center;
+    width: 40%;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    padding: 16px 22px;
+    cursor: pointer;
+    font-size: 16px;
+    background: #FF527B;
+    color: white;
+    font-weight: 500;
+    transition: transform .5s ease;
+}

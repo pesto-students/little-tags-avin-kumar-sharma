@@ -9,13 +9,13 @@ import "./style.css";
 
 function Header ({authorized, history, totalQuantity}) {
     const firebase = useContext(FirebaseContext);
-    const [errorMessage, setErrorMessage] = useState("");
+    //const [errorMessage, setErrorMessage] = useState("");
     const [cartItemsCount, setCartItemsCount] = useState(0);
+    const [userId, setUserId] = useState("");
 
     const handleLogin = () => {
         firebase.doGoogleSignIn()
         .then((authUser) => {
-            console.log(authUser);
             return firebase.user(authUser.user.uid).set({
                 email: authUser.user.email,
                 username: authUser.user.displayName,
@@ -24,7 +24,7 @@ function Header ({authorized, history, totalQuantity}) {
            
         })
         .catch((error) => {
-          setErrorMessage("LOGIN WINDOW:: CLOSED");
+          console.log("LOGIN WINDOW:: CLOSED");
          
         })
     }
@@ -37,15 +37,19 @@ function Header ({authorized, history, totalQuantity}) {
     }
 
     useEffect(()=>{
-
         setCartItemsCount(totalQuantity);
-    
     }, [totalQuantity])
+
+    useEffect(()=>{
+        if(authorized){
+            setUserId(authorized.uid)
+        }
+    },[authorized])
 
 return(
 <header>
     <div className="brand-logo">
-        <Link to={ROUTES.HOME_PAGE}>Ecomm Cart</Link>
+        <Link to={ROUTES.HOME_PAGE}><img src="/img/logo.png" alt="logo" id="logo"/></Link>
     </div>
     <div className="left-menu">
         <Link to={`${ROUTES.CATEGORIES_PAGE}/mens`}> MENS</Link>
@@ -66,11 +70,12 @@ return(
                     <button className="btn-login" onClick={handleLogin}>LOGIN/SIGNUP</button>
                     }
                     
-                    { !!errorMessage && <p style={{color: "red"}}>{errorMessage}</p>}
+                    {/* { !!errorMessage && <p style={{color: "red"}}>{errorMessage}</p>} */}
                 </div>
+                {authorized ?
                 <div className="dropdown-item dropdown-login">
-                    <a href="/">Orders</a>
-                </div>
+                <Link to={`${ROUTES.ORDER_HISTORY_PAGE}/${userId}`}> Orders</Link>
+                </div> : ""}
                 <div className="dropdown-item dropdown-login">
                 <a href="/">Contact Us</a>
                 </div>
@@ -88,7 +93,8 @@ return(
 
 const mapStateToProps = (state) => ({
     authorized : state.sessionReducer.authUser,
-    totalQuantity : state.cartReducer.totalQuantity
+    totalQuantity : state.cartReducer.totalQuantity,
+    
 });
 
 export default withRouter(connect(mapStateToProps)(Header));

@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux"
 import  {removeProductFromCart} from "../../actions/actions";
 
-function CartEntry({entryData , removeProductFromCart = ()=>{}}){
+function CartEntry({entryData , removeProductFromCart = ()=>{}, isRemoveEnable = true}){
     
    
 
@@ -34,9 +34,9 @@ function CartEntry({entryData , removeProductFromCart = ()=>{}}){
                        
                     </div>
                     </div>
-                    <div className="cart-entry-section-btn">
+                    {isRemoveEnable === true ? <div className="cart-entry-section-btn">
                         <button className="cart-entry-remove-btn" onClick={()=>handleRemoveProductFromCart(entryData.productId, entryData.product)}>REMOVE</button>
-                    </div>
+                    </div>: ""}
                 </div>
     )
 }

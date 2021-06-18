@@ -1,46 +1,59 @@
-import {ORDER_TO_CONFIRM} from "../actions/actionTypes"
+import {
+    ORDER_TO_CONFIRM,
+} from "../actions/actionTypes"
+import {
+    v4
+} from "uuid";
 import firebase from "firebase/app";
 
 const initialState = {
-    userUid:null,
-    cartid:null,
-    cart:[],
-    totalQuantity:0,
-    totalPrice:0
+    userUid: null,
+    cartid: null,
+    cart: [],
+    totalQuantity: 0,
+    totalPrice: 0,
+    trackingId: "",
+    date:""
 }
 
 export default function orderReducer(state = initialState, action) {
 
 
-    
-    switch(action.type) {
-        case ORDER_TO_CONFIRM: 
-         const orderObject = action.orderObject
 
-         try{
-            firebase.database().ref(`/orders/${orderObject.cartid}`).set({
-                ...orderObject
-            });
+    switch (action.type) {
+        case ORDER_TO_CONFIRM:
+            const orderObject = action.orderObject
 
-            firebase.database()
-           .ref(`/carts/${orderObject.cartid}`)
-          .remove()
-            .then(() => {
-          console.log("Cart Removed Successfully")
-        })
-         .catch(error => {
-      console.log(error);
-      })
+            try {
+                const orderUid = v4();
+                orderObject.trackingId = orderUid;
+                orderObject.date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+                firebase.database().ref(`/orders/${orderUid}`).set({
+                    ...orderObject
+                });
 
-        } catch(error) {
-            console.log("Error:: in stroing data in firebase through Order reducer", error)
-        }
+                firebase.database()
+                    .ref(`/carts/${orderObject.cartid}`)
+                    .remove()
+                    .then(() => {
+                        console.log("Cart Removed Successfully")
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
 
-        return {...state, ...orderObject};
+            } catch (error) {
+                console.log("Error:: in stroing data in firebase through Order reducer", error)
+            }
 
-        default: 
-        return {...state}
+            return {
+                ...state, ...orderObject
+            };
+
+            default:
+                return {
+                    ...state
+                }
     }
 
 }
-

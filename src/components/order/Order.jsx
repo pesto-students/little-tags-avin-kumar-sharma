@@ -6,13 +6,13 @@ import {withRouter} from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import "./style.css";
 
-function Order({cart = [], totalQuantity = 0, totalPrice =0, history, cartid}) {
+function Order({cart = [], totalQuantity = 0, totalPrice =0, history, cartid, trackingId}) {
    
     const [isLoading, setIsLoading] = useState('true');
 
     const mapCartEntries = cart.map((cartEntry, index)=>{
        
-        return (<CartEntry key={index} entryData={cartEntry}/>)
+        return (<CartEntry key={index} entryData={cartEntry} isRemoveEnable={false}/>)
     });
 
     const handleProceedToHome = () => {
@@ -36,7 +36,7 @@ function Order({cart = [], totalQuantity = 0, totalPrice =0, history, cartid}) {
             <div className="cart-section-left">
                 <div className="cart-offer">
                     <p><strong>Order Confirmation</strong></p>
-                    <p><strong>Tracking id: {cartid}</strong></p>
+                    <p><strong>Tracking id: {trackingId}</strong></p>
                      
                 </div>
                 <div className="cart-items-tag">
@@ -91,5 +91,6 @@ const mapStateToProps = (state) => ({
     totalPrice:state.orderReducer.totalPrice,
     userUid: state.orderReducer.userUid,
     cartid:state.orderReducer.cartid,
+    trackingId:state.orderReducer.trackingId
 });
 export default withRouter(connect(mapStateToProps)(Order));
