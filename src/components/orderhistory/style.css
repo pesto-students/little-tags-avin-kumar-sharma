@@ -1,0 +1,60 @@
+.order-history-section{
+    min-height: 480px;
+    padding: 20px;
+}
+  .accordion {
+    width: 90%;
+    margin: 12px;
+   
+
+  }
+  .accordion-item{
+    margin-top: 12px;
+  }
+  .accordion-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: whitesmoke;
+  }
+  
+  .accordion-title:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .accordion-title,
+  .accordion-content {
+    padding: 1rem;
+  }
+  
+  .accordion-content {
+    background-color: white;
+   
+  }
+ 
+  .order-price-row{
+    width:50%;
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e9e9ed; ;
+  }
+.order-price-row p{
+    color: black;
+    font-size: 15px;
+    
+}
+.shipped-status{
+  font-weight: 500;
+}
+
+  @media screen and (max-width: 700px) {
+    body {
+      font-size: 18px;
+    }
+  
+    .accordion {
+      width: 90%;
+    }
+  }
